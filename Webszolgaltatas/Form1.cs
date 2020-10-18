@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using Webszolgaltatas.Entities;
 using Webszolgaltatas.MnbServiceReference;
@@ -62,7 +63,25 @@ namespace Webszolgaltatas
                 if (unit != 0)
                     rate.Value = value / unit;
             }
-        
+
+            ChartRateData.DataSource = Rates;
+            var series = ChartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = ChartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = ChartRateData.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
+
+
+
+
         }
 
     }
