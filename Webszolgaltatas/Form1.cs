@@ -21,12 +21,17 @@ namespace Webszolgaltatas
         public Form1()
         {
             InitializeComponent();
-            GetExchangeRates();
-            dataGridView1.DataSource = Rates;
-            
+           
+            RefreshData();
         }
 
-       
+        private void RefreshData()
+        {
+            Rates.Clear();
+            GetExchangeRates();
+            dataGridView1.DataSource = Rates;
+        }
+
         public void GetExchangeRates()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
@@ -84,5 +89,19 @@ namespace Webszolgaltatas
 
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
