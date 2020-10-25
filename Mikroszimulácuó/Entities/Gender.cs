@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Mikroszimulácuó.Entities;
+
+
 
 namespace Mikroszimulácuó.Entities
 {
@@ -18,8 +22,7 @@ namespace Mikroszimulácuó.Entities
         public Gender Gender { get; set; }
         public int NbrOfChildren { get; set; }
         public bool IsAlive { get; set; }
-        public double BirthProbability { get; set; }
-        public double DeathProbability { get; set; }
+       
 
 
         public Person()
